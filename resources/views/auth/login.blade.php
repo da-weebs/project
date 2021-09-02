@@ -10,12 +10,13 @@
 </head>
 <body>
 
+<h1 style="text-align:center">PSM Scoring Tool</h1>
+
 <div class="container">
    <div class="row" style="margin-top:45px">
       <div class="col-md-4 col-md-offset-4">
-           <h4>Login | Custom Auth</h4><hr>
+           <h4>Login </h4><hr>
            <form action="{{ route('auth.check') }}" method="post">
-
            @if(Session::get('fail'))
                <div class="alert alert-danger">
                   {{ Session::get('fail') }}
@@ -25,9 +26,9 @@
 
            @csrf
               <div class="form-group">
-                 <label>Email</label>
-                 <input type="text" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
-                 <span class="text-danger">@error('email'){{ $message }} @enderror</span>
+                 <label>Username</label>
+                 <input type="text" class="form-control" name="username" placeholder="Enter username" value="{{ old('username') }}">
+                 <span class="text-danger">@error('username'){{ $message }} @enderror</span>
 
               </div>
               <div class="form-group">
@@ -37,7 +38,7 @@
               </div>
               <button type="submit" class="btn btn-block btn-primary">Sign In</button>
               <br>
-              <a href="{{ route('auth.register') }}">I don't have an account, create new</a>
+             <!-- <a href="{{ route('auth.register') }}">I don't have an account, create new</a> -->
            </form>
       </div>
    </div>

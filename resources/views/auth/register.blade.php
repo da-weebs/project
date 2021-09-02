@@ -13,7 +13,7 @@
 <div class="container">
    <div class="row" style="margin-top:45px">
       <div class="col-md-4 col-md-offset-4">
-           <h4>Register | Custom Auth</h4><hr>
+           <h4>Register User</h4><hr>
            <form action="{{ route('auth.save') }}" method="post">
 
            @if(Session::get('success'))
@@ -36,6 +36,12 @@
               </div>
 
               <div class="form-group">
+                 <label>Username</label>
+                 <input type="text" class="form-control" name="username" placeholder="username" value="{{ old('username') }}">
+                 <span class="text-danger">@error('username'){{ $message }} @enderror</span>
+              </div>
+
+              <div class="form-group">
                  <label>Email</label>
                  <input type="text" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
                  <span class="text-danger">@error('email'){{ $message }} @enderror</span>
@@ -47,7 +53,7 @@
               </div>
               <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
               <br>
-              <a href="{{ route('auth.login') }}">I already have an account, sign in</a>
+             <!-- <a href="{{ route('auth.login') }}">I already have an account, sign in</a> -->
            </form>
       </div>
    </div>
