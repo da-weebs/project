@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Http\Controllers\MailController;
+
 
 class MainController extends Controller
 {
@@ -18,12 +21,15 @@ class MainController extends Controller
 
     function save(Request $request){
         
+        //return $request->input();
+
         //validate requests
         $request->validate([
+            'usertype'=>'required',
             'name'=>'required',
             'username'=>'required|unique:admins',
-            'email'=>'required|unique:admins',
-            'password'=>'required|min:5|max:12'
+            'email'=>'required|unique:admins|email'
+            //'password'=>'required|min:5|max:12'
         ]);
 
         //Insert data into database 
@@ -31,15 +37,27 @@ class MainController extends Controller
         $admin->name = $request->name;
         $admin->username = $request->username;
         $admin->email = $request->email;
-        //$admin->password = ($request->password);
-        $admin->password = ($request->password); 
+        //$admin->password = make::hash($request->password); 
+        $admin->password=Str::random(8);
+        $request->password=$admin->password;
+
+        $userlevel = $request->usertype;
+        if($userlevel=='Coordinator')
+        $admin->level = 2;
+        else if($userlevel=='Admin')
+        $admin->level = 1;
+        else if($userlevel=='Lecturer')
+        $admin->level = 3;
+
         $save = $admin->save();
 
         if($save){
+            MailController::sendEmail($request);
             return back()->with('success','New User has been successfuly added to database');
         }else{
             return back()->with('fail','Something went wrong, try again later');
         }
+
     }
 
     function check(Request $request){
@@ -58,8 +76,7 @@ class MainController extends Controller
             //check password
             if(!strcmp($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser', $userInfo->id);
-                return redirect('admin/dashboard');
-
+                return view('admin/dashboard');
             }else{
                 return back()->with('fail','Incorrect password');
             }
@@ -75,6 +92,32 @@ class MainController extends Controller
 
     function dashboard(){
         $data = ['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
-        return view('admin.dashboard', $data);
+
+        // if($data->level == 1)
+         return view('admin.dashboard', $data);
+        // else
+        // return view('coordinator.dashboard', $data);
+    }
+
+    function changepassword(Request $request){
+
+        // $request->validate([
+        //     'curpassword'=>'required|min:5',
+        //     'newpassword'=>'required|min:5|max:12',
+        //     //'password'=>'required|min:5|max:12'
+        // ]);
+
+
+        // $userInfo = Admin::where('id','=',session('LoggedUser'))->first();
+
+        // //if(!strcmp($request->curpassword, $userInfo->password)){
+        // $userInfo->password = $request->curpassword;
+        // $userInfo->save();
+        //}
+        
+        // $userInfo = Admin::where('password','=', $request->curpassword)->first();
+        //$userInfo->password = $request->newpassword;
+        
+        return view('admin.changepassword');
     }
 }

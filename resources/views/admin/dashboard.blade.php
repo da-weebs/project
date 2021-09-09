@@ -5,37 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{ asset('boostrap-4/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{url('css/app.css')}}">
 </head>
 <body>
     
     <div class="container">
          <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                   <h4>Dashboard</h4><hr>
-                   <table class="table table-hover">
-                      <thead>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th></th>
-                      </thead>
+                   <h4>FYP Grading</h4><hr>
+                   <h3>Logged in as Admin</h3>
+
+                   <ul>
+                       <li><a href="/admin/dashboard">Home</a></li>
+                       <li><a href="/addstudent">Add Students</a></li>
+                       <li><a href="/liststudent">Students List</a></li>
+                       <li><a href="/addstudent">Assign Student</a></li>
+                       <li><a href="/admin/changepassword">Change Password</a></li>
+                       <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li>
+                   </ul>
+                   <td><a href="{{ route('auth.logout') }}">Logout</a></td>
+            </div>
+         </div>
+    </div>
+
+
+                       <!-- <table class="table table-hover">
                       <tbody>
                          <tr>
                             <td>{{ $LoggedUserInfo['name'] }}</td>
                             <td>{{ $LoggedUserInfo['email'] }}</td>
-                            <td><a href="{{ route('auth.logout') }}">Logout</a></td>
+                            <td>{{ $LoggedUserInfo['level'] }}</td>
+                            
                          </tr>
                       </tbody>
-                   </table>
-
-                   <ul>
-                       <li><a href="/admin/dashboard">Dashboard</a></li>
-                       <li><a href="/admin/profile">Profile</a></li>
-                       <li><a href="/admin/settings">Settings</a></li>
-                       <li><a href="/admin/staff">Staff</a></li>
-                   </ul>
-            </div>
-         </div>
-    </div>
+                   </table>-->
 </body>
 </html>

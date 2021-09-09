@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Login</title>
+    <title>Register</title>
     <link rel="stylesheet" href="{{ asset('boostrap-4/bootstrap.min.css') }}">
 
 </head>
@@ -29,6 +29,21 @@
            @endif
 
            @csrf 
+           <div class="">
+                 <label>User Type</label><br>
+                 <input type="radio" class="" name="usertype" value="Admin">
+                 <label for="Admin">Admin</label><br>
+
+                 <input type="radio" class="" name="usertype" value="Coordinator">
+                 <label for="Coordinator">Coordinator</label><br>
+                
+                 <input type="radio" class="" name="usertype" value="Lecturer">
+                 <label for="Lecturer">Lecturer</label><br>
+                 <span class="text-danger">@error('usertype'){{ $message }} @enderror</span>
+
+                 
+            </div>
+
            <div class="form-group">
                  <label>Name</label>
                  <input type="text" class="form-control" name="name" placeholder="Enter full name" value="{{ old('name') }}">
@@ -37,23 +52,23 @@
 
               <div class="form-group">
                  <label>Username</label>
-                 <input type="text" class="form-control" name="username" placeholder="username" value="{{ old('username') }}">
+                 <input type="text" class="form-control" name="username" placeholder="Enter Username" value="{{ old('username') }}">
                  <span class="text-danger">@error('username'){{ $message }} @enderror</span>
               </div>
 
               <div class="form-group">
                  <label>Email</label>
-                 <input type="text" class="form-control" name="email" placeholder="Enter email address" value="{{ old('email') }}">
+                 <input type="text" class="form-control" name="email" placeholder="Enter Email Address" value="{{ old('email') }}">
                  <span class="text-danger">@error('email'){{ $message }} @enderror</span>
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                  <label>Password</label>
                  <input type="password" class="form-control" name="password" placeholder="Enter password">
                  <span class="text-danger">@error('password'){{ $message }} @enderror</span>
-              </div>
-              <button type="submit" class="btn btn-block btn-primary">Sign Up</button>
+              </div> -->
+              <button type="submit" class="btn btn-block btn-primary">Submit</button>
               <br>
-             <!-- <a href="{{ route('auth.login') }}">I already have an account, sign in</a> -->
+             
            </form>
       </div>
    </div>
