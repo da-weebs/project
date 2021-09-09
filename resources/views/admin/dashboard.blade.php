@@ -21,7 +21,7 @@
                        <li><a href="/liststudent">Students List</a></li>
                        <li><a href="/addstudent">Assign Student</a></li>
                        <li><a href="/admin/changepassword">Change Password</a></li>
-                       <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li>
+                       <!-- <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li> -->
                    </ul>
                    <td><a href="{{ route('auth.logout') }}">Logout</a></td>
             </div>
@@ -29,7 +29,7 @@
     </div>
 
 
-                       <!-- <table class="table table-hover">
+                       <table class="table table-hover">
                       <tbody>
                          <tr>
                             <td>{{ $LoggedUserInfo['name'] }}</td>
@@ -38,6 +38,6 @@
                             
                          </tr>
                       </tbody>
-                   </table>-->
+                   </table>
 </body>
 </html>

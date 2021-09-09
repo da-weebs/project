@@ -20,8 +20,6 @@ class MainController extends Controller
     }
 
     function save(Request $request){
-        
-        //return $request->input();
 
         //validate requests
         $request->validate([
@@ -37,7 +35,6 @@ class MainController extends Controller
         $admin->name = $request->name;
         $admin->username = $request->username;
         $admin->email = $request->email;
-        //$admin->password = make::hash($request->password); 
         $admin->password=Str::random(8);
         $request->password=$admin->password;
 
@@ -61,7 +58,6 @@ class MainController extends Controller
     }
 
     function check(Request $request){
-        
         //validate requests
         $request->validate([
             'username'=>'required',
@@ -76,7 +72,7 @@ class MainController extends Controller
             //check password
             if(!strcmp($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser', $userInfo->id);
-                return view('admin/dashboard');
+                return redirect('admin/dashboard');
             }else{
                 return back()->with('fail','Incorrect password');
             }
@@ -92,11 +88,7 @@ class MainController extends Controller
 
     function dashboard(){
         $data = ['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
-
-        // if($data->level == 1)
          return view('admin.dashboard', $data);
-        // else
-        // return view('coordinator.dashboard', $data);
     }
 
     function changepassword(Request $request){

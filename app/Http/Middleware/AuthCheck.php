@@ -14,6 +14,7 @@ class AuthCheck
      * @param  \Closure  $next
      * @return mixed
      */
+    
     public function handle(Request $request, Closure $next)
     {
         if(!session()->has('LoggedUser')&&($request->path() !='auth/login' && $request->path() !='auth/register')){
