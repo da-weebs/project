@@ -71,7 +71,7 @@ class MainController extends Controller
         }else{
             //check password
             if(!strcmp($request->password, $userInfo->password)){
-                $request->session()->put('LoggedUser', $userInfo->id);
+                $request->session()->put('LoggedUser',$userInfo->id);
                 return redirect('admin/dashboard');
             }else{
                 return back()->with('fail','Incorrect password');
@@ -88,9 +88,16 @@ class MainController extends Controller
 
     function dashboard(){
         $data = ['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
-         return view('admin.dashboard', $data);
-    }
+        $userlevel=$data['LoggedUserInfo']->level;
 
+        if($userlevel==1)
+         return view('admin.dashboard', $data);
+        else if($userlevel==2)
+         return view('coordinator.dashboard', $data);
+        else if($userlevel==3)
+         return view('lecturer.dashboard', $data);
+    }
+    
     function changepassword(Request $request){
 
         // $request->validate([

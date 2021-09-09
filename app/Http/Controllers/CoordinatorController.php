@@ -10,6 +10,6 @@ class CoordinatorController extends Controller
 {
     public function assignstudent(){
         $students = DB::table('students')->get();
-        return view('coordinator.assignstudent', $students);
+        return view('coordinator.assignstudent', compact('students'));
     }
 }

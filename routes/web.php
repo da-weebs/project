@@ -26,7 +26,9 @@ Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout'
 Route::get('/auth/send-email',[MailController::class,'sendEmail'])->name('auth.email');
 
 Route::get('/coordinator/dashboard',[MainController::class, 'dashboard'])->name('coordinator.dashboard');
-Route::get('/coordinator/assignstudent',[CoordinatorController::class, 'assignstudent']);
+Route::get('/coordinator/assignstudent',[CoordinatorController::class, 'assignstudent'])->name('coordinator.assignstudent');
+
+Route::get('/lecturer/dashboard',[MainController::class, 'dashboard'])->name('lecturer.dashboard');
 
 Route::get('/admin/changepassword', [MainController::class, 'changepassword'])->name('admin.changepassword');
 

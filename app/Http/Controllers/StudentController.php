@@ -18,7 +18,7 @@ class StudentController extends Controller
     public function saveStudent(Request $request)
     {   
         $request->validate([
-            'studname'=>'required',
+            'name'=>'required',
             'course'=>'required',
             'email'=>'required|email',
             'phone'=>'required'
@@ -31,6 +31,8 @@ class StudentController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone
         ]);
+
+
 
             return back()->with('success','New User has been successfuly added to database');
 
@@ -61,6 +63,9 @@ class StudentController extends Controller
             DB::table('students')->where('id', $id)->delete();
             return back()->with('success', "Student deleted successfully");
     }
+
+    
+
 
 
     // public function index()

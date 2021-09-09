@@ -19,7 +19,7 @@
                        <li><a href="/admin/dashboard">Home</a></li>
                        <li><a href="/addstudent">Add Students</a></li>
                        <li><a href="/liststudent">Students List</a></li>
-                       <li><a href="/addstudent">Assign Student</a></li>
+                       <li><a href="{{route('coordinator.assignstudent')}}">Assign Student</a></li>
                        <li><a href="/admin/changepassword">Change Password</a></li>
                        <!-- <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li> -->
                    </ul>
@@ -27,8 +27,6 @@
             </div>
          </div>
     </div>
-
-
                        <table class="table table-hover">
                       <tbody>
                          <tr>
