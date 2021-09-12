@@ -31,10 +31,7 @@ class StudentController extends Controller
             'email'=>$request->email,
             'phone'=>$request->phone
         ]);
-
-
-
-            return back()->with('success','New User has been successfuly added to database');
+            return back()->with('success','New Student has been successfuly added to database');
 
         //return back()->with('student_add','Student added successfully'); //session to pass to view page.
     }

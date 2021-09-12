@@ -19,14 +19,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
 Route::post('/auth/check', [MainController::class, 'check'])->name('auth.check');
 Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
 Route::get('/auth/send-email',[MailController::class,'sendEmail'])->name('auth.email');
 
 Route::get('/coordinator/dashboard',[MainController::class, 'dashboard'])->name('coordinator.dashboard');
-Route::get('/coordinator/assignstudent',[CoordinatorController::class, 'assignstudent'])->name('coordinator.assignstudent');
+Route::get('/coordinator/lecturer',[CoordinatorController::class, 'lecturer'])->name('coordinator.lecturer');
+Route::get('/coordinator/assignsv',[CoordinatorController::class, 'assignsv'])->name('coordinator.assignsv');
+Route::get('/coordinator/updatesv',[CoordinatorController::class, 'updatesv'])->name('coordinator.updatesv');
 
 Route::get('/lecturer/dashboard',[MainController::class, 'dashboard'])->name('lecturer.dashboard');
 
@@ -40,9 +41,9 @@ Route::get('/deletestudent/{id}',[StudentController::class, 'studentDelete'])->n
 Route::get('/assignstudent/{id}',[StudentController::class, 'studentAssign'])->name('student.assign');
 Route::get('/updatestudent',[StudentController::class, 'updateStudent'])->name('update.student');
 
+Route::get('/auth/register',[MainController::class, 'register'])->name("auth.register");
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
-    Route::get('/auth/register',[MainController::class, 'register'])->name("auth.register");
     Route::get('/admin/dashboard',[MainController::class, 'dashboard'])->name('admin.dashboard');
 });
 

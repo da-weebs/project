@@ -17,17 +17,18 @@
 
                    <ul>
                        <li><a href="/admin/dashboard">Home</a></li>
+                       <li><a href="{{route('auth.register')}}">Register User</a></li>
                        <li><a href="/addstudent">Add Students</a></li>
                        <li><a href="/liststudent">Students List</a></li>
-                       <li><a href="{{route('coordinator.assignstudent')}}">Assign Student</a></li>
-                       <li><a href="/admin/changepassword">Change Password</a></li>
-                       <!-- <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li> -->
+                       <li><a href="{{route('coordinator.lecturer')}}">Lecturer</a></li>
+                       <!-- <li><a href="/admin/changepassword">Change Password</a></li> -->
+                       <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li>
                    </ul>
                    <td><a href="{{ route('auth.logout') }}">Logout</a></td>
             </div>
          </div>
     </div>
-                       <table class="table table-hover">
+                       <!-- <table class="table table-hover">
                       <tbody>
                          <tr>
                             <td>{{ $LoggedUserInfo['name'] }}</td>
@@ -35,7 +36,7 @@
                             <td>{{ $LoggedUserInfo['level'] }}</td>
                             
                          </tr>
-                      </tbody>
+                      </tbody> -->
                    </table>
 </body>
 </html>
