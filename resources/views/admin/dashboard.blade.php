@@ -5,30 +5,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="{{url('css/app.css')}}">
+    <!-- <link rel="stylesheet" href="{{url('css/app.css')}}"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
-    <div class="container">
-         <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                   <h4>FYP Grading</h4><hr>
-                   <h3>Logged in as Admin</h3>
+         <h1 style="text-align:center">FYP Grading</h1>
+         <h3 style="text-align:center"> Admin</h3>
 
+      <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+
+         <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
+               <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                  <li><a href="{{route('auth.register')}}">Register User</a></li>
+                  <li><a href="#">View User</a></li>
+               </ul>
+            </li>
+
+            <li class="dropdown">
+               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Students
+               <span class="caret"></span></a>
+               <ul class="dropdown-menu">
+                  <li><a href="{{route('student.add')}}">Add Students</a></li>
+                  <li><a href="#">View Students</a></li>
+               </ul>
+            </li>
+            
+            <li><a href="{{ route('auth.logout') }}">Logout</a></li>
+
+            <li style="float:right"><a href="#">{{ $LoggedUserInfo['name'] }}</li>
+         </ul>
+
+      </div>
+      </nav>
+                  <!--
                    <ul>
                        <li><a href="/admin/dashboard">Home</a></li>
                        <li><a href="{{route('auth.register')}}">Register User</a></li>
                        <li><a href="/addstudent">Add Students</a></li>
                        <li><a href="/liststudent">Students List</a></li>
                        <li><a href="{{route('coordinator.lecturer')}}">Lecturer</a></li>
-                       <!-- <li><a href="/admin/changepassword">Change Password</a></li> -->
-                       <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li>
-                   </ul>
-                   <td><a href="{{ route('auth.logout') }}">Logout</a></td>
-            </div>
-         </div>
-    </div>
-                       <!-- <table class="table table-hover">
+                       <li><a href="/admin/changepassword">Change Password</a></li> -->
+                       <!--  <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li> -->
+                   <!-- </ul> 
+                        <table class="table table-hover">
                       <tbody>
                          <tr>
                             <td>{{ $LoggedUserInfo['name'] }}</td>
@@ -37,6 +63,6 @@
                             
                          </tr>
                       </tbody> -->
-                   </table>
+                   <!-- </table> -->
 </body>
 </html>
