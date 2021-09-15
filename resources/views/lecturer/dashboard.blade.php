@@ -28,7 +28,7 @@
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
                <span class="caret"></span></a>
                <ul class="dropdown-menu">
-                  <li><a href="#">Change Password</a></li>
+                  <li><a href="{{route('admin.changepassword')}}">Change Password</a></li>
                </ul>
             </li>
             
@@ -36,40 +36,41 @@
          </ul>
       </div>
     </nav>
+        <br>
+            <div class="container">          
+        <table class="table table-bordered">
+            
+            <tbody>
+            <tr>
+                <th>Session</th>
+                <td>2021/2022</td>
+            </tr>
+            <tr>
+                <th>Semester</th>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Progress 1</th>
+                <td>20/12/2021</td>
+            </tr>
+            <tr>
+                <th>Progress 2</th>
+                <td>18/6/2022</td>
+            </tr>
+            <tr>
+                <th>Final Report</th>
+                <td>22/9/2022</td>
+            </tr>
+            <tr>
+                <th>Presentation & Demo</th>
+                <td>25/9/2022</td>
+            </tr>
 
-    <div class="container">          
-  <table class="table table-bordered">
-    
-    <tbody>
-      <tr>
-        <th>Session</th>
-        <td>2021/2022</td>
-      </tr>
-      <tr>
-        <th>Semester</th>
-        <td>1</td>
-      </tr>
-      <tr>
-        <th>Progress 1</th>
-        <td>20/12/2021</td>
-      </tr>
-      <tr>
-        <th>Progress 2</th>
-        <td>18/6/2022</td>
-      </tr>
-      <tr>
-        <th>Final Report</th>
-        <td>22/9/2022</td>
-      </tr>
-      <tr>
-        <th>Presentation & Demo</th>
-        <td>25/9/2022</td>
-      </tr>
 
 
+            </tbody>
+        </table>
+        </div>
 
-    </tbody>
-  </table>
-</div>
 </body>
 </html>

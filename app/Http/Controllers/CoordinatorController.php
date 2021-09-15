@@ -17,7 +17,11 @@ class CoordinatorController extends Controller
 
     public function assignsv(){
         $students = DB::table('students')->get();
-        $lecturers = DB::table('admins')->where('level','=',3)->get();
+        $lecturers = DB::table('admins')
+                        ->where('level','=',3)
+                        ->where('log','=',1)
+                        ->where('students','<',5)
+                        ->get();
 
         return view('coordinator.assignsv', compact('lecturers','students'));
     }

@@ -20,6 +20,8 @@ class CreateAdminsTable extends Migration
             $table->text('email');
             $table->text('password');
             $table->integer('level');
+            $table->integer('log');
+            $table->integer('students');
             $table->timestamps();
         });
     }

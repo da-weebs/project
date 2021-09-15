@@ -37,6 +37,8 @@ class MainController extends Controller
         $admin->email = $request->email;
         $admin->password=Str::random(8);
         $request->password=$admin->password;
+        $admin->log = 0;
+        $admin->students = 0;
 
         $userlevel = $request->usertype;
         if($userlevel=='Coordinator')
@@ -72,6 +74,10 @@ class MainController extends Controller
             //check password
             if(!strcmp($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser',$userInfo->id);
+                $request->session()->put('LoggedUserName',$userInfo->name);
+                Admin::where('username','=', $request->username)->update([
+                    'log'=> 1
+                ]);
                 return redirect('admin/dashboard');
             }else{
                 return back()->with('fail','Incorrect password');
@@ -90,24 +96,23 @@ class MainController extends Controller
         $data = ['LoggedUserInfo'=>Admin::where('id','=',session('LoggedUser'))->first()];
         $userlevel=$data['LoggedUserInfo']->level;
 
-        if($userlevel==1)
-         return view('admin.dashboard', $data);
-        else if($userlevel==2)
-         return view('coordinator.dashboard', $data);
+        if($userlevel==1){
+        session()->put('UserLevel',$userlevel);
+        return view('admin.dashboard', $data);
+        }
+        else if($userlevel==2){
+        session()->put('UserLevel',$userlevel);
+        return view('coordinator.dashboard', $data);
+        }
         else if($userlevel==3)
-         return view('lecturer.dashboard', $data);
+        session()->put('UserLevel',$userlevel);
+        return view('lecturer.dashboard', $data);
     }
     
     function changepassword(Request $request){
-
-        // $request->validate([
-        //     'curpassword'=>'required|min:5',
-        //     'newpassword'=>'required|min:5|max:12',
-        //     //'password'=>'required|min:5|max:12'
+        // Admin::where('id','=',session('LoggedUser'))->update([
+        //     'password'=> $request->password
         // ]);
-
-
-        // $userInfo = Admin::where('id','=',session('LoggedUser'))->first();
 
         // //if(!strcmp($request->curpassword, $userInfo->password)){
         // $userInfo->password = $request->curpassword;
@@ -118,5 +123,19 @@ class MainController extends Controller
         //$userInfo->password = $request->newpassword;
         
         return view('admin.changepassword');
+    }
+
+    function savepassword(Request $request){
+        $request->validate([
+            'curpassword'=>'required|min:5',
+            'newpassword'=>'required|min:5|max:12'
+        ]);
+
+        Admin::where('id','=',session('LoggedUser'))->update([
+            'password'=> $request->newpassword
+        ]);
+        
+        return view('admin.changepassword')->with('success','Password has been successfuly changed');
+        // return back()->with('success','Password has been successfuly changed');
     }
 }

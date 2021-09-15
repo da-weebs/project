@@ -32,6 +32,7 @@ Route::get('/coordinator/updatesv',[CoordinatorController::class, 'updatesv'])->
 Route::get('/lecturer/dashboard',[MainController::class, 'dashboard'])->name('lecturer.dashboard');
 
 Route::get('/admin/changepassword', [MainController::class, 'changepassword'])->name('admin.changepassword');
+Route::get('/admin/savepassword', [MainController::class, 'savepassword'])->name('admin.savepassword');
 
 Route::get('/addstudent',[StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/addstudent',[StudentController::class, 'saveStudent'])->name('student.save');
@@ -42,6 +43,7 @@ Route::get('/assignstudent/{id}',[StudentController::class, 'studentAssign'])->n
 Route::get('/updatestudent',[StudentController::class, 'updateStudent'])->name('update.student');
 
 Route::get('/auth/register',[MainController::class, 'register'])->name("auth.register");
+
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
     Route::get('/admin/dashboard',[MainController::class, 'dashboard'])->name('admin.dashboard');
