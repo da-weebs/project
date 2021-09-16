@@ -1,20 +1,34 @@
+<?php 
+ $num=1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dashboard</title>
-    <!-- <link rel="stylesheet" href="{{url('css/app.css')}}"> -->
+    <title>View User</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <style>
+        table{
+            border-collapse: collapse;
+            width: auto;
+        }
+
+        td,th{
+            padding: 5px;
+            border: 1px solid;
+        }
+    </style>
 </head>
 <body>
-         <h1 style="text-align:center">FYP Grading</h1>
-         <h3 style="text-align:center"> Admin</h3>
-
-      <nav class="navbar navbar-inverse">
+    
+    
+    <nav class="navbar navbar-inverse">
       <div class="container-fluid">
 
          <ul class="nav navbar-nav">
@@ -47,30 +61,32 @@
             
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
 
-            <li style="float:right"><a href="#">{{ $LoggedUserInfo['name'] }}</li>
+            
          </ul>
 
       </div>
       </nav>
-                  <!--
-                   <ul>
-                       <li><a href="/admin/dashboard">Home</a></li>
-                       <li><a href="{{route('auth.register')}}">Register User</a></li>
-                       <li><a href="/addstudent">Add Students</a></li>
-                       <li><a href="/liststudent">Students List</a></li>
-                       <li><a href="{{route('coordinator.lecturer')}}">Lecturer</a></li>
-                       <li><a href="/admin/changepassword">Change Password</a></li> -->
-                       <!--  <li style="float:right"><a href="#about">{{ $LoggedUserInfo['name'] }}</a></li> -->
-                   <!-- </ul> 
-                        <table class="table table-hover">
-                      <tbody>
-                         <tr>
-                            <td>{{ $LoggedUserInfo['name'] }}</td>
-                            <td>{{ $LoggedUserInfo['email'] }}</td>
-                            <td>{{ $LoggedUserInfo['level'] }}</td>
-                            
-                         </tr>
-                      </tbody> -->
-                   <!-- </table> -->
+    <table>
+        <tr>
+            <th>Num</th>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>User Level</th>
+        </tr>
+        
+        
+        @foreach($users as $list)
+        <tr>
+            <td>{{$num++}}</td>
+            <td>{{$list->id}}</td>
+            <td>{{$list->name}}</td>
+            <td>{{$list->email}}</td>
+            <td>{{$list->level}}</td> 
+        </tr>
+        @endforeach
+
+    </table>
+
 </body>
 </html>

@@ -7,6 +7,7 @@ use App\Models\Admin;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use App\Http\Controllers\MailController;
+use Illuminate\Support\Facades\DB;
 
 
 class MainController extends Controller
@@ -137,5 +138,10 @@ class MainController extends Controller
         
         return view('admin.changepassword')->with('success','Password has been successfuly changed');
         // return back()->with('success','Password has been successfuly changed');
+    }
+
+    function viewuser(){
+        $users = DB::table('admins')->get();
+        return view('admin.viewuser', compact('users'));
     }
 }

@@ -34,4 +34,9 @@ class CoordinatorController extends Controller
         
         return back()->with('success','Student updated successfully');
     }
+
+    function viewlecturer(){
+        $users = DB::table('admins')->where('level','=','3')->get();
+        return view('coordinator.viewlecturer', compact('users'));
+    }
 }

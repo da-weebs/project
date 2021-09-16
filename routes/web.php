@@ -16,7 +16,7 @@ use App\Http\Controllers\StudentController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
@@ -28,11 +28,13 @@ Route::get('/coordinator/dashboard',[MainController::class, 'dashboard'])->name(
 Route::get('/coordinator/lecturer',[CoordinatorController::class, 'lecturer'])->name('coordinator.lecturer');
 Route::get('/coordinator/assignsv',[CoordinatorController::class, 'assignsv'])->name('coordinator.assignsv');
 Route::get('/coordinator/updatesv',[CoordinatorController::class, 'updatesv'])->name('coordinator.updatesv');
+Route::get('/coordinator/viewlecturer',[CoordinatorController::class, 'viewlecturer'])->name('coordinator.viewlecturer');
 
 Route::get('/lecturer/dashboard',[MainController::class, 'dashboard'])->name('lecturer.dashboard');
 
 Route::get('/admin/changepassword', [MainController::class, 'changepassword'])->name('admin.changepassword');
 Route::get('/admin/savepassword', [MainController::class, 'savepassword'])->name('admin.savepassword');
+Route::get('/admin/viewuser' , [MainController::class, 'viewuser'])->name('admin.viewuser');
 
 Route::get('/addstudent',[StudentController::class, 'addStudent'])->name('student.add');
 Route::post('/addstudent',[StudentController::class, 'saveStudent'])->name('student.save');

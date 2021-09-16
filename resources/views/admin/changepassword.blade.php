@@ -114,7 +114,7 @@
     </nav>
     @endif  
 
-    <h1>Change Password</h1>
+   
     <form action="{{ route('admin.savepassword') }}" method="get">
 
         @if(Session::get('success'))
