@@ -66,27 +66,31 @@
 
       </div>
       </nav>
-    <table>
-        <tr>
-            <th>Num</th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>User Level</th>
-        </tr>
-        
-        
-        @foreach($users as $list)
-        <tr>
-            <td>{{$num++}}</td>
-            <td>{{$list->id}}</td>
-            <td>{{$list->name}}</td>
-            <td>{{$list->email}}</td>
-            <td>{{$list->level}}</td> 
-        </tr>
-        @endforeach
 
-    </table>
+      
+      <div class="container">
+            <h3>Users</h3>
+            <table class="table table-bordered table-sm">
+                <tr>
+                    <th>List</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>User Level</th>
+                </tr>
+                
+                
+                @foreach($users as $list)
+                <tr>
+                    <td>{{$num++}}</td>
+                    <td>{{$list->id}}</td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->email}}</td>
+                    <td>{{$list->level}}</td> 
+                </tr>
+                @endforeach
 
+            </table>
+    </div>
 </body>
 </html>

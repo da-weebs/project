@@ -65,29 +65,35 @@
       </div>
       </nav>
 
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Program Code</th>
-            <th>Email</th>
-            <th>Phone Number</th>
-        </tr>
+    <div class="container">
+        <div class="row" style="margin-top:45px">
         
-        @foreach($students as $list)
-        <tr>
-            <td>{{$list->id}}</td>
-            <td>{{$list->studname}}</td>
-            <td>{{$list->course}}</td>
-            <td>{{$list->email}}</td>
-            <td>{{$list->phone}}</td>
-            <td>
-                <a href="/editstudent/{{$list->id}}" >Edit</a> |
-                <a href="/deletestudent/{{$list->id}}" >Delete</a>
-            </td>
-        </tr>
-        @endforeach
-
-    </table>
+        <h3>List of Students</h3>
+        <table class="table table-bordered table-sm">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Program Code</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+            </tr>
+            
+            @foreach($students as $list)
+            <tr>
+                <td>{{$list->id}}</td>
+                <td>{{$list->studname}}</td>
+                <td>{{$list->course}}</td>
+                <td>{{$list->email}}</td>
+                <td>{{$list->phone}}</td>
+                <!-- <td>
+                    <a href="/editstudent/{{$list->id}}" >Edit</a> |
+                    <a href="/deletestudent/{{$list->id}}" >Delete</a>
+                </td> -->
+            </tr>
+            @endforeach
+        </table>
+            
+        </div>
+    </div>
 </body>
 </html>

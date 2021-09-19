@@ -29,7 +29,7 @@
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
                <span class="caret"></span></a>
                <ul class="dropdown-menu">
-                  <li><a href="#">Change Password</a></li>
+                  <li><a href="{{ route('admin.changepassword') }}">Change Password</a></li>
                </ul>
             </li>
             
@@ -38,29 +38,35 @@
       </div>
     </nav>
 
-    @if(Session::has('success'))
-    <span>{{ Session::get('success') }}</span>
-    @endif
-        @csrf
-        <form action="{{route('coordinator.updatesv')}}" method="get">
-
-                <label for="lecturer">Lecturer</label><br> 
-                 <select id="lect-list" name="lecturer">
-                @foreach($lecturers as $lect)
-                    <option value="{{$lect->name}}" name="lecturer">{{$lect->name}}</option>
-                @endforeach
-                </select><br>
-
-                
-                <label for="student">Student</label><br>
-                <select id="student-list" name="students">
-                @foreach($students as $stud)
-                    <option value="{{$stud->studname}}" name="students">{{$stud->studname}}</option>
-                @endforeach
-                </select><br>
-                
-            <input type="submit" value="Submit">
-        </form>
-
+        <div class="container">
+            <div class="col-md-4 col-md-offset-4">
+            @if(Session::has('success'))
+            <span>{{ Session::get('success') }}</span>
+            @endif
+            @csrf
+            <h3>Assign Supervisor</h3>
+            <form action="{{route('coordinator.updatesv')}}" method="get">
+                    <div class="form-group">
+                        <label for="lecturer">Lecturer</label><br> 
+                            <select class='form-control' id="lect-list" name="lecturer">
+                                @foreach($lecturers as $lect)
+                                    <option value="{{$lect->name}}" name="lecturer">{{$lect->name}}</option>
+                                @endforeach
+                            </select><br>
+                    </div>
+                    
+                    <div class="form-group">
+                    <label for="student">Student</label><br>
+                    <select class='form-control' id="student-list" name="students">
+                    @foreach($students as $stud)
+                        <option value="{{$stud->studname}}" name="students">{{$stud->studname}}</option>
+                    @endforeach
+                    </select><br>
+                    </div>
+                    
+                <input type="submit" value="Submit">
+            </form>
+            </div>
+        </div>
     </body>
 </html>

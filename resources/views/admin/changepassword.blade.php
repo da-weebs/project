@@ -108,35 +108,41 @@
             </li>
             
             <li><a href="{{ route('auth.logout') }}">Logout</a></li>
-            <li ><a href="#about">{{ Session::get('LoggedUserName') }}</li>
-         </ul>
-      </div>
-    </nav>
-    @endif  
+            <li ><a href="#">{{ Session::get('LoggedUserName') }}</li>
+          </ul>
+         </div>
+      </nav>
+      @endif  
 
-   
-    <form action="{{ route('admin.savepassword') }}" method="get">
+    <div class='container'>
+         <div class="col-md-4 col-md-offset-4">
+            <h3>Change Password</h3>
+            <form action="{{ route('admin.savepassword') }}" method="get">
+               @if(Session::get('success'))
+                        <div class="alert alert-success">
+                           {{ Session::get('success') }}
+                        </div>
+                     @endif
 
-        @if(Session::get('success'))
-                <div class="alert alert-success">
-                    {{ Session::get('success') }}
-                </div>
-            @endif
+                     @if(Session::get('fail'))
+                           <div class="alert alert-danger">
+                                 {{ Session::get('fail') }}
+                           </div>
+                     @endif
 
-            @if(Session::get('fail'))
-                    <div class="alert alert-danger">
-                        {{ Session::get('fail') }}
-                    </div>
-            @endif
+               @csrf 
+               <div class="form-group">
+               <input type="password" class="" name="currentpassword" placeholder="Enter current password"><br>
+               <span class="text-danger">@error('currentpassword'){{ $message }} @enderror</span>
+               </div>
 
-        @csrf 
+               <div class="form-group">
+               <input type="password" class="" name="newpassword" placeholder="Enter new password"><br>
+               <span class="text-danger">@error('newpassword'){{ $message }} @enderror</span>
+               </div>
 
-        <input type="password" class="" name="curpassword" placeholder="Enter current password"><br>
-        <span class="text-danger">@error('password'){{ $message }} @enderror</span>
-
-        <input type="password" class="" name="newpassword" placeholder="Enter new password"><br>
-        <span class="text-danger">@error('password'){{ $message }} @enderror</span>
-
-        <button type="submit" class="">Submit</button>
-    </form>
+               <button type="submit" class="">Submit</button>
+            </form>
+         </div>
+    </div>
 </body>

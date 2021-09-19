@@ -15,14 +15,14 @@
 
          <ul class="nav navbar-nav">
             <li class="active"><a href="#">Home</a></li>
-            <li class="dropdown">
+            <!-- <li class="dropdown">
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lecturer
                <span class="caret"></span></a>
                <ul class="dropdown-menu">
                   <li><a href="{{route('auth.register')}}">View Lecturer</a></li>
                   <li><a href="{{route('coordinator.assignsv')}}">Assign Student</a></li>
                </ul>
-            </li>
+            </li> -->
 
             <li class="dropdown">
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile

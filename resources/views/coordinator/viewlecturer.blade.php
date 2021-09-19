@@ -56,28 +56,31 @@
          </ul>
       </div>
     </nav>
+    
+    <div class="container">
+        <h3>List of Lecturer</h3>
+            <table class="table table-bordered table-sm">
+                <tr>
+                    <th>List</th>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Students</th>
+                </tr>
+                
+                
+                @foreach($users as $list)
+                <tr>
+                    <td>{{$num++}}</td>
+                    <td>{{$list->id}}</td>
+                    <td>{{$list->name}}</td>
+                    <td>{{$list->email}}</td>
+                    <td>{{$list->students}}</td> 
+                </tr>
+                @endforeach
 
-    <table>
-        <tr>
-            <th>Num</th>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Students</th>
-        </tr>
+            </table>
         
-        
-        @foreach($users as $list)
-        <tr>
-            <td>{{$num++}}</td>
-            <td>{{$list->id}}</td>
-            <td>{{$list->name}}</td>
-            <td>{{$list->email}}</td>
-            <td>{{$list->students}}</td> 
-        </tr>
-        @endforeach
-
-    </table>
-
+    </div>
 </body>
 </html>
