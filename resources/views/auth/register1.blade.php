@@ -71,17 +71,9 @@
                @csrf 
                <div class="">
                      <label>User Type</label><br>
-                     <input type="radio" class="" name="usertype" value="Admin">
-                     <label for="Admin">Admin</label><br>
-
                      <input type="radio" class="" name="usertype" value="Coordinator">
                      <label for="Coordinator">Coordinator</label><br>
-                     
-                     <input type="radio" class="" name="usertype" value="Lecturer">
-                     <label for="Lecturer">Lecturer</label><br>
-                     <span class="text-danger">@error('usertype'){{ $message }} @enderror</span>
-
-                     
+                   
                   </div>
 
                <div class="form-group">

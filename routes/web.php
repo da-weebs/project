@@ -45,6 +45,9 @@ Route::get('/assignstudent/{id}',[StudentController::class, 'studentAssign'])->n
 Route::get('/updatestudent',[StudentController::class, 'updateStudent'])->name('update.student');
 
 Route::get('/auth/register',[MainController::class, 'register'])->name("auth.register");
+Route::get('/auth/register1',[MainController::class, 'register1'])->name("auth.register1");
+Route::get('/auth/register2',[MainController::class, 'register2'])->name("auth.register2");
+
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');

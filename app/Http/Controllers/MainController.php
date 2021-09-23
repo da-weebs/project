@@ -20,6 +20,14 @@ class MainController extends Controller
         return view('auth.register');
     }
 
+    function register1(){
+        return view('auth.register1');
+    }
+
+    function register2(){
+        return view('auth.register2');
+    }
+
     function save(Request $request){
 
         //validate requests

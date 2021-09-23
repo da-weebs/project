@@ -23,7 +23,9 @@
                <a class="dropdown-toggle" data-toggle="dropdown" href="#">User
                <span class="caret"></span></a>
                <ul class="dropdown-menu">
-                  <li><a href="{{route('auth.register')}}">Register User</a></li>
+                  <li><a href="{{route('auth.register')}}">Register Admin</a></li>
+                  <li><a href="{{route('auth.register1')}}">Register Coordinator</a></li>
+                  <li><a href="{{route('auth.register2')}}">Register Supervisor</a></li>
                   <li><a href="{{route('admin.viewuser')}}">View User</a></li>
                </ul>
             </li>
