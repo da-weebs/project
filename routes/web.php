@@ -20,6 +20,8 @@ Route::get('/', function () {
 });
 
 Route::post('/auth/save',[MainController::class, 'save'])->name('auth.save');
+Route::post('/auth/save1',[MainController::class, 'save1'])->name('auth.save1');
+Route::post('/auth/save2',[MainController::class, 'save2'])->name('auth.save2');
 Route::post('/auth/check', [MainController::class, 'check'])->name('auth.check');
 Route::get('/auth/logout',[MainController::class, 'logout'])->name('auth.logout');
 Route::get('/auth/send-email',[MailController::class,'sendEmail'])->name('auth.email');
@@ -48,6 +50,8 @@ Route::get('/auth/register',[MainController::class, 'register'])->name("auth.reg
 Route::get('/auth/register1',[MainController::class, 'register1'])->name("auth.register1");
 Route::get('/auth/register2',[MainController::class, 'register2'])->name("auth.register2");
 
+Route::get('/import-form',[StudentController::class,'importForm']);
+Route::post('/import',[StudentController::class,'import'])->name('student.import');
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');

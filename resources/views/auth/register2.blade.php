@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register Coordinator</title>
+    <title>Register Supervisor</title>
     <!-- <link rel="stylesheet" href="{{ asset('boostrap-4/bootstrap.min.css') }}"> -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -53,8 +53,8 @@
       <div class="container">
          <div class="row" style="margin-top:45px">
             <div class="col-md-4 col-md-offset-4">
-               <h4>Register User</h4><hr>
-               <form action="{{ route('auth.save') }}" method="post">
+               <h4>Register Supervisor</h4><hr>
+               <form action="{{ route('auth.save2') }}" method="post">
 
                @if(Session::get('success'))
                   <div class="alert alert-success">
@@ -69,13 +69,13 @@
                @endif
 
                @csrf 
-               <div class="">
+               <!-- <div class="">
                      <label>User Type</label><br>
                      <input type="radio" class="" name="usertype" value="Lecturer">
                      <label for="Lecturer">Supervisor</label><br>
                      
                      <span class="text-danger">@error('usertype'){{ $message }} @enderror</span>
-                  </div>
+                  </div> -->
 
                <div class="form-group">
                      <label>Name</label>

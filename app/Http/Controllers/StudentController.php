@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Imports\StudentImport;
+use Excel;
 
 
 class StudentController extends Controller
@@ -59,6 +61,15 @@ class StudentController extends Controller
     public function studentDelete($id){
             DB::table('students')->where('id', $id)->delete();
             return back()->with('success', "Student deleted successfully");
+    }
+
+    public function importForm(){
+        return view('import-form');
+    }
+
+    public function import(Request $request){
+        Excel::import(new StudentImport, $request->file);
+        return "Record are imported successfully";
     }
 
     
