@@ -21,6 +21,8 @@ class StudentImport implements ToModel,WithHeadingRow
             'email' => $row['email'],
             'phone' => $row['phone'],
             'lecturername' => $row['lecturername'],
+            'cohort' => $row['cohort'],
+            'sessionpsm' => $row['psm'],
         ]);
     }
 }

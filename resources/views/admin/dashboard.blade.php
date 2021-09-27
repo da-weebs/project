@@ -36,6 +36,7 @@
                <ul class="dropdown-menu">
                   <li><a href="{{route('student.add')}}">Add Students</a></li>
                   <li><a href="{{route('student.list')}}">View Students</a></li>
+                  <li><a href="{{route('student.importform')}}">Upload Students Data</a></li>
                </ul>
             </li>
 

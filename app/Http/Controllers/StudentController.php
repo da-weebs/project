@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Imports\StudentImport;
@@ -64,12 +65,12 @@ class StudentController extends Controller
     }
 
     public function importForm(){
-        return view('import-form');
+        return view('student.import-form');
     }
 
     public function import(Request $request){
         Excel::import(new StudentImport, $request->file);
-        return "Record are imported successfully";
+        return back()->with('success',"Record are imported successfully");
     }
 
     

@@ -20,6 +20,8 @@ class CreateStudentsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->string('lecturername');
+            $table->string('cohort');
+            $table->string('sessionpsm');
             $table->timestamps();
         });
     }

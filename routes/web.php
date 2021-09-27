@@ -5,6 +5,7 @@ use App\Http\Controllers\MailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SearchController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,8 +51,10 @@ Route::get('/auth/register',[MainController::class, 'register'])->name("auth.reg
 Route::get('/auth/register1',[MainController::class, 'register1'])->name("auth.register1");
 Route::get('/auth/register2',[MainController::class, 'register2'])->name("auth.register2");
 
-Route::get('/import-form',[StudentController::class,'importForm']);
+Route::get('/import-form',[StudentController::class,'importForm'])->name('student.importform');
 Route::post('/import',[StudentController::class,'import'])->name('student.import');
+
+Route::get('/search',[SearchController::class,'search'])->name('web.search');
 
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
