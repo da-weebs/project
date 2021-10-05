@@ -56,6 +56,13 @@ Route::post('/import',[StudentController::class,'import'])->name('student.import
 
 Route::get('/search',[SearchController::class,'search'])->name('web.search');
 
+Route::get('/student/proposalform',[StudentController::class,'viewform'])->name('student.viewform');
+Route::post('/student/proposal',[StudentController::class,'submitform'])->name('student.submitform');
+
+Route::get('/dummy', function () {
+    return view('admin.dummy');
+});
+
 Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/auth/login',[MainController::class, 'login'])->name('auth.login');
     Route::get('/admin/dashboard',[MainController::class, 'dashboard'])->name('admin.dashboard');
