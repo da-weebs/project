@@ -58,6 +58,9 @@ Route::get('/search',[SearchController::class,'search'])->name('web.search');
 
 Route::get('/student/proposalform',[StudentController::class,'viewform'])->name('student.viewform');
 Route::post('/student/proposal',[StudentController::class,'submitform'])->name('student.submitform');
+Route::get('/student/consentform',[StudentController::class,'viewconsentform'])->name('student.viewconsentform');
+Route::post('/student/consent',[StudentController::class,'submitconsentform'])->name('student.submitconsentform');
+
 
 Route::get('/dummy', function () {
     return view('admin.dummy');
