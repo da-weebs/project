@@ -78,31 +78,32 @@ class StudentController extends Controller
     }
 
     public function submitform(Request $request){
-        $request->validate([
-            'name'=>'required',
-            'year'=>'required',
-            'icno' =>'required',
-            'matrixno' => 'required',
-            'email'=>'required|email',
-            'mobileno'=>'required',
-            'svname'=>'required',
-            'project-title'=>'required',
-            'problem-solution'=>'required',
-            'objectives'=>'required',
-            'scopes'=>'required',
-            'software'=>'required',
-            'hardware'=>'required',
-            'method'=>'required',
-            'security'=> 'required',
-            'area'=>'required',
-            'owner'=>'required',
-            'date'=>'required',
-        ]);
+        // $request->validate([
+        //     'name'=>'required',
+        //     'year'=>'required',
+        //     'icno' =>'required',
+        //     'matrixno' => 'required',
+        //     'email'=>'required|email',
+        //     'mobileno'=>'required',
+        //     'svname'=>'required',
+        //     'project-title'=>'required',
+        //     'problem-solution'=>'required',
+        //     'objectives'=>'required',
+        //     'scopes'=>'required',
+        //     'software'=>'required',
+        //     'hardware'=>'required',
+        //     'method'=>'required',
+        //     'network' =>'required',
+        //     'security'=> 'required',
+        //     'area'=>'required',
+        //     'owner'=>'required',
+        //     'date'=>'required'
+        // ]);
 
         DB::table('proposal_form')->insert([
             'name'=>$request->name,
             'year'=>$request->year,
-            'ic' =>$request->ic,
+            'ic' =>$request->icno,
             'matrix' => $request->matrixno,
             'email'=>$request->email,
             'mobileno'=>$request->mobileno,
@@ -114,95 +115,14 @@ class StudentController extends Controller
             'software'=>$request->software,
             'hardware'=>$request->hardware,
             'method'=>$request->method,
+            'network' =>$request->network,
             'security'=> $request->security,
             'project_type'=> $request->project_type,
             'project_area'=>$request->area,
             'project_idea'=>$request->owner,
             'date'=>$request->date
         ]);
-        return back()->with('success','New Student has been successfuly added to database');;
+        return back()->with('success','New Student has been successfuly added to database');
     }
 
-
-
-    
-
-
-
-    // public function index()
-    // {
-    //     $students = Student::latest()->paginate(5);
-    //     return view('students.index', compact('students'))
-    //             ->with('i', (request()->input('page',1) - 1) * 5);
-    // }
-
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function create()
-    // {
-    //     return view('students.create');
-    // }
-
-    // /**
-    //  * Store a newly created resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function store(Request $request)
-    // {
-    //     $request->validate([
-    //         'studname' => 'required',
-    //         'course' => 'required',
-    //         'fee' => 'required'
-    //     ]);
-    // }
-
-    // /**
-    //  * Display the specified resource.
-    //  *
-    //  * @param  \App\Models\Student  $student
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function show(Student $student)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  \App\Models\Student  $student
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function edit(Student $student)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  \App\Models\Student  $student
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function update(Request $request, Student $student)
-    // {
-    //     //
-    // }
-
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  \App\Models\Student  $student
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function destroy(Student $student)
-    // {
-    //     //
-    // }
 }

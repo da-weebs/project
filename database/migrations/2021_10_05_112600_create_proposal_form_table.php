@@ -15,7 +15,6 @@ class CreateProposalFormTable extends Migration
     {
         Schema::create('proposal_form', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('name');
             $table->string('year');
             $table->string('ic');
@@ -36,6 +35,7 @@ class CreateProposalFormTable extends Migration
             $table->string('project_area');
             $table->string('project_idea');
             $table->date('date');
+            $table->timestamps();
         });
     }
 

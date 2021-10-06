@@ -15,15 +15,19 @@
         <p>Session/Semester 2021/2022 </p>
     </div>
 
+    
+
     <div class="container mt-5">
         <div class="row justify-content-center">
-            @if(Session::has('success'))
-                <div class="alert alert-success">
-                <span>{{ Session::get('success') }}</span>
-                </div>
-            @endif
+            
           <div class="col-md-6 ">
-                <form action="{{ route('student.submitform') }}" method="POST">
+                <form action="{{ route('student.submitform') }}" method="post">
+                    @csrf
+                        @if(Session::has('success'))
+                            <div class="alert alert-success">
+                            <span>{{ Session::get('success') }}</span>
+                            </div>
+                         @endif
                     <h3><b>SECTION A: STUDENT INFORMATION</b></h3>
                     <div class="mb-3">
                         <label class="form-label">Name </label><br>
@@ -92,6 +96,11 @@
                         <div class="mb-3">
                             <label class="form-label">Technology/Technique/Method/Algorithm:</label>
                             <input type="text" class="form-control" name="method" value="" placeholder=""><br>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Network Elements:</label>
+                            <input type="text" class="form-control" name="network" value="" placeholder=""><br>
                         </div>
 
                         <div class="mb-3">
