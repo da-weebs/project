@@ -11,4 +11,9 @@ class Student extends Model
     protected $table = "students";
 
     protected $fillable =['studname','course','matric','email','phone','lecturername','cohort','sessionpsm'];
+
+    public function scopeSearch($query, $term){
+        $term = "%$term%";
+        $query->where('studname','like',$term);
+    }
 }
