@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Livewire;
+
+use App\Models\Course;
 use App\Models\Student;
 use Livewire\Component;
 
@@ -9,7 +11,7 @@ use Livewire\Component;
 
 class Students extends Component
 {
-    public $byStudents = null;
+    public $byCourse = null;
     public $perPage = 10;
     public $orderBy = 'studname';
     public $sortBy = 'asc';
@@ -18,13 +20,16 @@ class Students extends Component
     public function render()
     {
         return view('livewire.students',[
-            'students'=>Student::orderBy('studname','asc')->get(),
-            'students'=>Student::when($this->byStudents, function($query){
-                $query->where('id', $this->byStudents);
+            'courses'=>Course::orderBy('course_name','asc')->get(),
+            // 'students'=>Student::orderBy('studname','asc')->paginate()
+            'students'=>Student::when($this->byCourse, function($query){
+                $query->where('courses_id', $this->byCourse);
                 })
                 ->search(trim($this->search))
                 ->orderBy($this->orderBy, $this->sortBy)
                 ->paginate($this->perPage)
         ]);
     }
+
+
 }

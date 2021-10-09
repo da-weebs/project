@@ -3,10 +3,10 @@
     <div class="row mb-3 p-3">
         <div class="col-md-3">
             <label for="">Course</label>
-            <select wire:model="byStudent" class="form-control">
+            <select wire:model="byCourse" class="form-control">
                 <option value="">No Selected</option>
-                @foreach ($students as $student)
-                    <option value="{{ $student->id}}">{{$student->course}}</option>
+                @foreach ($courses as $course)
+                    <option value="{{ $course->id}}">{{$course->course_name}}</option>
                 @endforeach
             </select>
         </div>
