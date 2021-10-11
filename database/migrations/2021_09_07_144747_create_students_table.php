@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Eloquent\Model;
+
 
 class CreateStudentsTable extends Migration
 {
@@ -15,7 +17,7 @@ class CreateStudentsTable extends Migration
     {
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->integer('courses_id')->nullable();
+            $table->foreignId('courses_id')->nullable();
             $table->string('studname');
             $table->string('matric');
             $table->string('course');
@@ -24,6 +26,7 @@ class CreateStudentsTable extends Migration
             $table->string('lecturername');
             $table->string('cohort');
             $table->string('sessionpsm');
+            // $table->foreign('courses_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -37,4 +40,5 @@ class CreateStudentsTable extends Migration
     {
         Schema::dropIfExists('students');
     }
+
 }

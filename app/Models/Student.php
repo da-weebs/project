@@ -12,8 +12,10 @@ class Student extends Model
 
     protected $fillable =['studname','courses_id','course','matric','email','phone','lecturername','cohort','sessionpsm'];
 
-    public function courses(){
-        return $this->belongsTo(Course::class,'courses_id','id');
+    public function courses()
+    {
+        //return $this->hasOne('App\Models\Student');
+        return $this->hasOne(Courses::class, 'courses_id', 'id');
     }
 
     public function scopeSearch($query, $term){

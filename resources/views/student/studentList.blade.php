@@ -85,7 +85,7 @@
             <tr>
                 <td>{{$list->id}}</td>
                 <td>{{$list->studname}}</td>
-                <td>{{$list->course}}</td>
+                <td>{{$list->courses->course_name}}</td>
                 <td>{{$list->email}}</td>
                 <td>{{$list->phone}}</td>
                 <!-- <td>

@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Course;
+use App\Models\Courses;
 use App\Models\Student;
 use Livewire\Component;
 
@@ -20,7 +20,7 @@ class Students extends Component
     public function render()
     {
         return view('livewire.students',[
-            'courses'=>Course::orderBy('course_name','asc')->get(),
+            'courses'=>Courses::orderBy('course_name','asc')->get(),
             // 'students'=>Student::orderBy('studname','asc')->paginate()
             'students'=>Student::when($this->byCourse, function($query){
                 $query->where('courses_id', $this->byCourse);
