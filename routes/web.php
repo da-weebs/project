@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\FormController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,10 +57,15 @@ Route::post('/import',[StudentController::class,'import'])->name('student.import
 
 Route::get('/search',[SearchController::class,'search'])->name('web.search');
 
-Route::get('/student/proposalform',[StudentController::class,'viewform'])->name('student.viewform');
-Route::post('/student/proposal',[StudentController::class,'submitform'])->name('student.submitform');
-Route::get('/student/consentform',[StudentController::class,'viewconsentform'])->name('student.viewconsentform');
-Route::post('/student/consent',[StudentController::class,'submitconsentform'])->name('student.submitconsentform');
+Route::get('/student/proposalform',[FormController::class,'viewform'])->name('student.viewform');
+Route::post('/student/proposal',[FormController::class,'submitform'])->name('form.submitform');
+Route::get('/student/listproposal',[FormController::class,'listform'])->name('student.listform');
+
+Route::get('/student/consentform',[FormController::class,'viewconsentform'])->name('student.viewconsentform');
+Route::post('/student/consent',[FormController::class,'submitconsentform'])->name('student.submitconsentform');
+
+Route::get('/import-proposal',[FormController::class, 'importForm'])->name('viewimport.proposal');
+Route::post('/import',[FormController::class, 'import'])->name('import.proposal');
 
 
 Route::get('/dummy', function () {

@@ -12,7 +12,36 @@
 
    <h1 style="text-align:center">FYP Grading System</h1>
 
-<nav class="navbar navbar-inverse">
+   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <div class="container-fluid">
+          <a class="navbar-brand" href="{{route('admin.dashboard')}}">Coordinator</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+         <ul class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lecturer</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{route('coordinator.viewlecturer')}}">View Lecturer</a></li>
+                <li><a class="dropdown-item" href="{{route('coordinator.assignsv')}}">Assign Student</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{route('admin.changepassword')}}">Change Password</a></li>
+              </ul>
+            </li>
+
+            <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
+            <li class="nav-item"><a class="nav-link disabled" href="#">{{ $LoggedUserInfo['name'] }}</li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+{{-- <nav class="navbar navbar-inverse">
       <div class="container-fluid">
 
          <ul class="nav navbar-nav">
@@ -39,7 +68,7 @@
             <li style="float:right"><a href="#">{{ $LoggedUserInfo['name'] }}</li>
          </ul>
       </div>
-    </nav>
+    </nav> --}}
 
 </body>
 </html>

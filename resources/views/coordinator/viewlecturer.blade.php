@@ -27,49 +27,37 @@
 <body>
     
     
-    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">Admin</a>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{route('admin.dashboard')}}">Coordinator</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">User</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('auth.register')}}">Register Admin</a></li>
-                  <li><a class="dropdown-item" href="{{route('auth.register1')}}">Register Coordinator</a></li>
-                  <li><a class="dropdown-item" href="{{route('auth.register2')}}">Register Supervisor</a></li>
-                  <li><a class="dropdown-item" href="{{route('admin.viewuser')}}">View User</a></li>
-                </ul>
-              </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Students</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.add')}}">Add Students</a></li>
-                  <li><a class="dropdown-item" href="{{route('student.list')}}">View Students</a></li>
-                  <li><a class="dropdown-item" href="{{route('student.importform')}}">Upload Students Data</a></li>
-                  
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.add')}}">Change Password</a></li>
-                  
-                </ul>
-              </li>
-
-              <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
-              {{-- <li class="nav-item"><a class="nav-link disabled" href="#">{{ $LoggedUserInfo['name'] }}</li> --}}
+      <div class="collapse navbar-collapse" id="collapsibleNavbar">
+       <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Lecturer</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{route('coordinator.viewlecturer')}}">View Lecturer</a></li>
+              <li><a class="dropdown-item" href="{{route('coordinator.assignsv')}}">Assign Student</a></li>
             </ul>
-          </div>
-        </div>
-      </nav>
+          </li>
+
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{route('admin.changepassword')}}">Change Password</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
+          {{-- <li class="nav-item"><a class="nav-link disabled" href="#">{{ $LoggedUserInfo['name'] }}</li> --}}
+        </ul>
+      </div>
+    </div>
+  </nav>
     
-    <div class="container">
+    <div class="container" style="margin-top: 20px">
         <h3>List of Lecturer</h3>
             <table class="table table-bordered table-sm">
                 <tr>

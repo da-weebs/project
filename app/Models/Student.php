@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Courses;
 
 class Student extends Model
 {
@@ -15,7 +16,7 @@ class Student extends Model
     public function courses()
     {
         //return $this->hasOne('App\Models\Student');
-        return $this->hasOne(Courses::class, 'courses_id', 'id');
+        return $this->hasOne(Courses::class);
     }
 
     public function scopeSearch($query, $term){

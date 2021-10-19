@@ -21,7 +21,7 @@
         <div class="row justify-content-center">
             
           <div class="col-md-6">
-                <form action="{{ route('student.submitform') }}" method="post">
+                <form action="{{ route('form.submitform') }}" method="post">
                     @csrf
                         @if(Session::has('success'))
                             <div class="alert alert-success">

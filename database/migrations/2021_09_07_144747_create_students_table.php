@@ -15,9 +15,10 @@ class CreateStudentsTable extends Migration
      */
     public function up()
     {
+        Schema::enableForeignKeyConstraints();
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('courses_id')->nullable();
+            //$table->integer('courses_id');
             $table->string('studname');
             $table->string('matric');
             $table->string('course');
@@ -26,7 +27,7 @@ class CreateStudentsTable extends Migration
             $table->string('lecturername');
             $table->string('cohort');
             $table->string('sessionpsm');
-            // $table->foreign('courses_id')->references('id')->on('courses')->onDelete('cascade');
+            //$table->foreign('courses_id')->references('id')->on('courses')->onDelete('cascade');
             $table->timestamps();
         });
     }
