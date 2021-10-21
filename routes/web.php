@@ -74,8 +74,10 @@ Route::post('/student/consent',[FormController::class,'submitconsentform'])->nam
 Route::get('/import-proposal',[FormController::class, 'importForm'])->name('viewimport.proposal');
 Route::post('/import',[FormController::class, 'import'])->name('import.proposal');
 
-Route::get('/form/upload-proposal',[FormController::class, 'uploadProposal'])->name('view.upload');
-Route::post('/form/upload',[FormController::class, 'upload'])->name('view.upload-proposal');
+//upload link proposal
+Route::get('/form/upload-proposal',[FormController::class, 'viewuploadProposal'])->name('view.upload');
+Route::get('/form/upload/{id}',[FormController::class, 'upload'])->name('view.upload-proposal');
+Route::post('/form/saveupload',[FormController::class, 'saveUpload'])->name('save.upload');
 
 Route::get('/dummy', function () {
     return view('admin.dummy');
@@ -86,3 +88,5 @@ Route::group(['middleware'=>['AuthCheck']], function(){
     Route::get('/admin/dashboard',[MainController::class, 'dashboard'])->name('admin.dashboard');
 });
 
+Route::get('/add-link',[FormController::class,'testadd']);
+Route::get('/add-linked/{id}',[FormController::class,'testaddproject']);

@@ -18,7 +18,7 @@ class CreateStudentsTable extends Migration
         Schema::enableForeignKeyConstraints();
         Schema::create('students', function (Blueprint $table) {
             $table->id();
-            //$table->integer('courses_id');
+            $table->integer('courses_id');
             $table->string('studname');
             $table->string('matric');
             $table->string('course');

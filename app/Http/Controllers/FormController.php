@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Proposal;
 use App\Imports\ProposalImport;
+use App\Models\project;
+use App\Models\Student;
 
 use Excel;
 
@@ -146,8 +148,52 @@ class FormController extends Controller
         return back()->with ("Record imported successfully");
     }
 
-    public function uploadProposal(){
-        $student = DB::table('students')->get();
+    public function viewuploadProposal(){
+        $student=Student::all();
+        // $student = DB::table('students')->get();
         return view('form.uploadlink', compact('student'));
+    }
+
+    public function upload($id){
+        $students = DB::table('students')->where('id', $id)->first(); //fetch first record using id
+        return view('form.formuploadlink', compact('students'));
+    }
+
+    public function saveUpload(Request $request){
+        $student = Student::find( $request->id);
+        $project = new project();
+        $project->student_id = $request->id;
+        $project->link = $request->link;
+        $student->projects()->save($project);
+        
+        return back()->with('success','Student updated successfully');
+    }
+
+
+
+    public function testadd(){
+        $student = new Student();
+        $student->courses_id = "1";
+        $student->studname = "ADAM BIN JAMAL";
+        $student->matric = "A21EC0001";
+        $student->course = "SECJ";
+        $student->email = "adamjamal@gmail.com";
+        $student->phone = "0123234543";
+        $student->lecturername = "DR KAMAL";
+        $student->cohort = "2019/2022";
+        $student->sessionpsm = "2023/2024";
+        $student->save();
+
+        return "Student has been successfully added";
+
+    }
+
+    public function testaddproject($id){
+        $student = Student::find($id);
+        $project = new project();
+        $project->student_id = "abubakar123";
+        $project->link = "second link";
+        $student->projects()->save($project);
+        return "Link has been successfully added";
     }
 }

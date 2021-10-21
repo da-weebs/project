@@ -19,6 +19,10 @@ class Student extends Model
         return $this->hasOne(Courses::class);
     }
 
+    public function projects(){
+        return $this->hasMany(project::class);
+    }
+
     public function scopeSearch($query, $term){
         $term = "%$term%";
         $query->where(function($query) use ($term){
