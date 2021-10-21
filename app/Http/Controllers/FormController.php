@@ -143,6 +143,11 @@ class FormController extends Controller
 
     public function import(Request $request){
         Excel::import(new ProposalImport, $request->file);
-        return "Record imported successfully";
+        return back()->with ("Record imported successfully");
+    }
+
+    public function uploadProposal(){
+        $student = DB::table('students')->get();
+        return view('form.uploadlink', compact('student'));
     }
 }

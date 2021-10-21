@@ -64,7 +64,7 @@
                                 <span>{{ Session::get('success') }}</span>
                                 </div>
                                 @endif
-                                    <form method="POST" enctype="multipart/form-data" action="{{ route('student.import') }}">
+                                <form method="POST" enctype="multipart/form-data" action="{{ route('import.student') }}">
                                     @csrf
                                     <div class="mb-3">
                                         <label for="file">Choose CSV</label>
