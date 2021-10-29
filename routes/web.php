@@ -75,9 +75,14 @@ Route::get('/import-proposal',[FormController::class, 'importForm'])->name('view
 Route::post('/import',[FormController::class, 'import'])->name('import.proposal');
 
 //upload link proposal
-Route::get('/form/upload-proposal',[FormController::class, 'viewuploadProposal'])->name('view.upload');
+Route::get('/form/viewupload-proposal',[FormController::class, 'viewuploadProposal'])->name('view.upload');
 Route::get('/form/upload/{id}',[FormController::class, 'upload'])->name('view.upload-proposal');
 Route::post('/form/saveupload',[FormController::class, 'saveUpload'])->name('save.upload');
+
+//approve proposal
+Route::get('/form/evaluate',[FormController::class, 'viewEvaluate'])->name('view.evaluate');
+Route::get('/form/approve/{id}',[FormController::class, 'giveApprove'])->name('give.Approve');
+Route::get('/form/reject/{id}',[FormController::class, 'giveReject'])->name('give.Reject');
 
 Route::get('/dummy', function () {
     return view('admin.dummy');

@@ -164,12 +164,13 @@ class FormController extends Controller
         $project = new project();
         $project->student_id = $request->id;
         $project->link = $request->link;
+
+        $project->status = "Unmarked";
+
         $student->projects()->save($project);
         
         return back()->with('success','Student updated successfully');
     }
-
-
 
     public function testadd(){
         $student = new Student();
@@ -195,5 +196,25 @@ class FormController extends Controller
         $project->link = "second link";
         $student->projects()->save($project);
         return "Link has been successfully added";
+    }
+
+    public function viewEvaluate(){
+        $student=Student::all();
+        // $student = DB::table('students')->get();
+        return view('panel.viewevaluate', compact('student'));
+    }
+
+    public function giveApprove($id){
+        DB::table('projects')->where('id', $id)->update([
+            'status'=> "Approved"
+        ]);
+        return back()->with('success','Project updated successfully');
+    }
+
+    public function giveReject($id){
+        DB::table('projects')->where('id', $id)->update([
+            'status'=> "Rejected"
+        ]);
+        return back()->with('success','Project updated successfully');
     }
 }

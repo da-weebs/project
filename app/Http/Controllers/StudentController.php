@@ -77,4 +77,6 @@ class StudentController extends Controller
         Excel::import(new StudentImport, $request->file);
         return back()->with('success',"Record are imported successfully");
     }
+
+   
 }

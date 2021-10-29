@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Evaluate Student</title>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
@@ -35,14 +36,6 @@
               </li>
 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Project</a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('view.upload')}}">Project Info</a></li>
-                  <li><a class="dropdown-item" href="{{route('view.evaluate')}}">Gdrive Link</a></li>
-                </ul>
-              </li>
-
-              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="{{route('student.add')}}">Change Password</a></li>
@@ -55,68 +48,50 @@
           </div>
         </div>
       </nav>
-    {{-- <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
-      <div class="container-fluid">
 
-         <ul class="navbar-brand">
-            <li class="active"><a href="#">Home</a></li>
-            <!-- <li class="dropdown">
-               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lecturer
-               <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><a href="{{route('auth.register')}}">View Lecturer</a></li>
-                  <li><a href="{{route('coordinator.assignsv')}}">Assign Student</a></li>
-               </ul>
-            </li> -->
-
-            <li class="dropdown">
-               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
-               <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><a href="{{route('admin.changepassword')}}">Change Password</a></li>
-               </ul>
-            </li>
+        <div class="container">
+            <div class="row" style="margin-top:80px">
+                <h2>Evaluate Proposal</h2>
+        <table class="table table-bordered table-sm">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Program Code</th>
+                <th>Email</th>
+                <th>Phone Number</th>
+                <th>Link</th>
+                <th>Action</th>
+                
+            </tr>
             
-            <li><a href="{{ route('auth.logout') }}">Logout</a></li>
-         </ul>
-      </div>
-    </nav> --}}
-
-        <br>
-            <div class="container" style="margin-top: 40px">          
-                <table class="table table-bordered">
-            
-            <tbody>
+            @foreach($student as $list)
             <tr>
-                <th>Session</th>
-                <td>2021/2022</td>
+                <td>{{$list->id}}</td>
+                <td>{{$list->studname}}</td>
+                <td>{{$list->course}}</td>
+                <td>{{$list->email}}</td>
+                <td>{{$list->phone}}</td>                    
+                
+                
+                <td>
+                    @if($list->projects!=null)     
+                        @foreach($list->projects as $senarai) 
+                            <a href="{{$senarai->link}}">{{$senarai->link}}<br></a>
+                        @endforeach
+                    
+                    @endif
+                </td>
+                <td>
+                    <a href="/form/approve/{{$list->id}}" >Approve</a> 
+                </td>
+                <td>
+                    <a href="/form/reject/{{$list->id}}" >Reject</a> 
+                </td>
             </tr>
-            <tr>
-                <th>Semester</th>
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>Progress 1</th>
-                <td>20/12/2021</td>
-            </tr>
-            <tr>
-                <th>Progress 2</th>
-                <td>18/6/2022</td>
-            </tr>
-            <tr>
-                <th>Final Report</th>
-                <td>22/9/2022</td>
-            </tr>
-            <tr>
-                <th>Presentation & Demo</th>
-                <td>25/9/2022</td>
-            </tr>
-
-
-
-            </tbody>
+            @endforeach
         </table>
-        </div>
 
+    </div>
+</div>
 </body>
 </html>

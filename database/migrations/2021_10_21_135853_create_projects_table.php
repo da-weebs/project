@@ -17,6 +17,10 @@ class CreateProjectsTable extends Migration
             $table->id();
             $table->bigInteger('student_id')->unsigned();
             $table->string('link');
+            $table->string('status');
+            // $table->timestamp('update1');
+            // $table->timestamp('update2');
+            // $table->timestamp('update3');
             $table->timestamps();
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
         });
