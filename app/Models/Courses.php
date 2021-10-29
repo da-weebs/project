@@ -15,6 +15,6 @@ class Courses extends Model
 
     public function student(){
         //return $this->belongsTo('App\Models\Courses');
-        return $this->belongsTo(Student::class);
+        return $this->hasOne(Student::class);
     }
 }

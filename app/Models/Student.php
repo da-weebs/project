@@ -16,7 +16,7 @@ class Student extends Model
     public function courses()
     {
         //return $this->hasOne('App\Models\Student');
-        return $this->hasOne(Courses::class);
+        return $this->belongsTo(Courses::class);
     }
 
     public function projects(){
@@ -26,8 +26,8 @@ class Student extends Model
     public function scopeSearch($query, $term){
         $term = "%$term%";
         $query->where(function($query) use ($term){
-            $query->where('studname','like',$term)
-                  ->orWhere('courses_id','like',$term);
+            $query->where('studname','like',$term);
+                //   ->orWhere('courses_id','like',$term);
         });
     }
 }

@@ -1,6 +1,7 @@
 
 
     <div class="row mb-3 p-3">
+
         <div class="col-md-3">
             <label for="">Course</label>
             <select wire:model="byCourse" class="form-control">
@@ -13,7 +14,8 @@
 
         <div class="col-md-3">
             <label for="">Search</label>
-            <input type="text" class="form-control" wire:model.debounce.350ms="search">
+            <input type="text" class="form-control" wire:model.debounce.350ms="searchTerm">
+            <!-- <input type="text" wire:model="searchTerm" /> -->
         </div>
 
         <div class="col-md-2">
@@ -28,9 +30,11 @@
         <div class="col-md-2">
             <label for="">Order By</label>
             <select class="form-control" wire:model="orderBy">
+                <option value="studname">Name</option>
                 <option value="cohort">Cohort</option>
                 <option value="sessionpsm">PSM Session</option>
                 <option value="lecturername">Supervisor</option>
+                <option value="courses_id">Course</option>
             </select>
         </div>
 
@@ -42,40 +46,41 @@
             </select>
         </div>
 
+    
+
+        <div class="container">
+
+            <table class="table table-hover">
+                <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Matric Number</th>
+                            <th>Program</th>
+                            <th>Cohort</th>
+                            <th>PSM Session</th>
+                            <th>Supervisor</th>
+                        </tr>
+                </thead>
+
+                <tbody>
+                    @foreach($students as $student)
+                    <div>
+                        <tr>
+                            <td>{{ $student->studname }}</td>
+                            <td>{{ $student->matric }}</td>
+                            <td>{{ $student->courses->course_name }}</td>
+                            <td>{{ $student->cohort }}</td>
+                            <td>{{ $student->sessionpsm }}</td>
+                            <td>{{ $student->lecturername }}</td>
+                        </tr>
+                    </div>
+                    @endforeach
+                </tbody>
+            </table>
+
+        </div>
     </div>
 
-
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Matric Number</th>
-                    <th>Program</th>
-                    <th>Cohort</th>
-                    <th>PSM Session</th>
-                    <th>Supervisor</th>
-                </tr>
-            </thead>
-    
-            <tbody>
-                @forelse ($students as $student)
-                    {{-- <tr class="{{ $this->isChecked($student->id) }}">
-                    <td><input type="checkbox" value="{{ $student->id }}" wire:model="checkedStudent"></td> --}}
-                    <td>{{ $student->studname }}</td>
-                    <td>{{ $student->matric }}</td>
-                    <td>{{ $student->course }}</td>
-                    <td>{{ $student->cohort }}</td>
-                    <td>{{ $student->sessionpsm }}</td>
-                    <td>{{ $student->lecturername }}</td>
-                </tr>
-                @empty
-                    <code>No student found!</code>
-                @endforelse
-    
-            </tbody>
-        </table>
-    </div>
-
+        
 
 

@@ -1,6 +1,7 @@
 
 
     <div class="row mb-3 p-3">
+
         <div class="col-md-3">
             <label for="">Course</label>
             <select wire:model="byCourse" class="form-control">
@@ -13,7 +14,8 @@
 
         <div class="col-md-3">
             <label for="">Search</label>
-            <input type="text" class="form-control" wire:model.debounce.350ms="search">
+            <input type="text" class="form-control" wire:model.debounce.350ms="searchTerm">
+            <!-- <input type="text" wire:model="searchTerm" /> -->
         </div>
 
         <div class="col-md-2">
@@ -28,9 +30,11 @@
         <div class="col-md-2">
             <label for="">Order By</label>
             <select class="form-control" wire:model="orderBy">
+                <option value="studname">Name</option>
                 <option value="cohort">Cohort</option>
                 <option value="sessionpsm">PSM Session</option>
                 <option value="lecturername">Supervisor</option>
+                <option value="courses_id">Course</option>
             </select>
         </div>
 
@@ -42,40 +46,42 @@
             </select>
         </div>
 
+    
+
+        <div class="container">
+
+            <table class="table table-hover">
+                <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Matric Number</th>
+                            <th>Program</th>
+                            <th>Cohort</th>
+                            <th>PSM Session</th>
+                            <th>Supervisor</th>
+                        </tr>
+                </thead>
+
+                <tbody>
+                    <?php $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <div>
+                        <tr>
+                            <td><?php echo e($student->studname); ?></td>
+                            <td><?php echo e($student->matric); ?></td>
+                            <td><?php echo e($student->courses->course_name); ?></td>
+                            <td><?php echo e($student->cohort); ?></td>
+                            <td><?php echo e($student->sessionpsm); ?></td>
+                            <td><?php echo e($student->lecturername); ?></td>
+                        </tr>
+                    </div>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </tbody>
+            </table>
+
+        </div>
     </div>
 
-
-    <div class="container">
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Matric Number</th>
-                    <th>Program</th>
-                    <th>Cohort</th>
-                    <th>PSM Session</th>
-                    <th>Supervisor</th>
-                </tr>
-            </thead>
-    
-            <tbody>
-                <?php $__empty_1 = true; $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $student): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
-                    
-                    <td><?php echo e($student->studname); ?></td>
-                    <td><?php echo e($student->matric); ?></td>
-                    <td><?php echo e($student->course); ?></td>
-                    <td><?php echo e($student->cohort); ?></td>
-                    <td><?php echo e($student->sessionpsm); ?></td>
-                    <td><?php echo e($student->lecturername); ?></td>
-                </tr>
-                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
-                    <code>No student found!</code>
-                <?php endif; ?>
-    
-            </tbody>
-        </table>
-    </div>
-
+        
 
 
 <?php /**PATH /app/resources/views/livewire/students.blade.php ENDPATH**/ ?>
