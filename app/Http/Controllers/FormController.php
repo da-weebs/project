@@ -217,4 +217,19 @@ class FormController extends Controller
         ]);
         return back()->with('success','Project updated successfully');
     }
+
+    public function gradePage($id){
+        $students=DB::table('projects')->where('id', $id)->first();
+        return view('panel.gradepage', compact('students'));
+    }
+
+    public function giveGrade(Request $request){
+        DB::table('projects')->where('id', $request->id)->update([
+            'status'=> $request->grade
+        ]);
+
+        return back()->with('success','Project updated successfully');;
+    }
+
+
 }

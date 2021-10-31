@@ -12,7 +12,7 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{route('admin.dashboard')}}">Lecturer</a>
+            <a class="navbar-brand" href="<?php echo e(route('admin.dashboard')); ?>">Lecturer</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
               <span class="navbar-toggler-icon"></span>
               </button>
@@ -21,29 +21,29 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Students</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.list')}}">View Students</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.list')); ?>">View Students</a></li>
                 </ul>
               </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Form</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.viewform')}}">Project Proposal Form</a></li>
-                  <li><a class="dropdown-item" href="{{route('student.viewconsentform')}}">Supervisor Consent Form</a></li>
-                  <li><a class="dropdown-item" href="{{route('student.listform')}}">View Proposal List</a></li>
-                  <li><a class="dropdown-item" href="{{route('viewimport.proposal')}}">Upload Proposal List</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.viewform')); ?>">Project Proposal Form</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.viewconsentform')); ?>">Supervisor Consent Form</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.listform')); ?>">View Proposal List</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('viewimport.proposal')); ?>">Upload Proposal List</a></li>
                 </ul>
               </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.add')}}">Change Password</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.add')); ?>">Change Password</a></li>
                 </ul>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
-              {{-- <li class="nav-item"><a class="nav-link disabled" href="#">{{ $LoggedUserInfo['name'] }}</li> --}}
+              <li class="nav-item"><a class="nav-link" href="<?php echo e(route('auth.logout')); ?>">Logout</a></li>
+              
             </ul>
           </div>
         </div>
@@ -64,38 +64,38 @@
                 
             </tr>
             
-            @foreach($student as $list)
+            <?php $__currentLoopData = $student; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{$list->id}}</td>
-                <td>{{$list->studname}}</td>
-                <td>{{$list->course}}</td>
-                <td>{{$list->email}}</td>
-                <td>{{$list->phone}}</td>                    
+                <td><?php echo e($list->id); ?></td>
+                <td><?php echo e($list->studname); ?></td>
+                <td><?php echo e($list->course); ?></td>
+                <td><?php echo e($list->email); ?></td>
+                <td><?php echo e($list->phone); ?></td>                    
                 
                 
                 <td>
-                    @if($list->projects!=null)     
-                        @foreach($list->projects as $senarai) 
-                            <a href="{{$senarai->link}}">{{$senarai->link}}<br></a>
-                        @endforeach
+                    <?php if($list->projects!=null): ?>     
+                        <?php $__currentLoopData = $list->projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $senarai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
+                            <a href="<?php echo e($senarai->link); ?>"><?php echo e($senarai->link); ?><br></a>
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     
-                    @endif
+                    <?php endif; ?>
                 </td>
                 <td>
-                    <a href="/panel/gradepage/{{$list->id}}" >Grade</a> 
+                    <a href="/panel/gradepage/<?php echo e($list->id); ?>" >Grade</a> 
                 </td>
 
                 <!-- <td>
-                    <a href="/form/approve/{{$list->id}}" >Approve</a> 
+                    <a href="/form/approve/<?php echo e($list->id); ?>" >Approve</a> 
                 </td>
                 <td>
-                    <a href="/form/reject/{{$list->id}}" >Reject</a> 
+                    <a href="/form/reject/<?php echo e($list->id); ?>" >Reject</a> 
                 </td> -->
             </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </table>
 
     </div>
 </div>
 </body>
-</html>
+</html><?php /**PATH C:\Users\FAIZ\Documents\GitHub\project\resources\views/panel/viewevaluate.blade.php ENDPATH**/ ?>

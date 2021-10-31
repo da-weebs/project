@@ -80,9 +80,11 @@ Route::get('/form/upload/{id}',[FormController::class, 'upload'])->name('view.up
 Route::post('/form/saveupload',[FormController::class, 'saveUpload'])->name('save.upload');
 
 //approve proposal
-Route::get('/form/evaluate',[FormController::class, 'viewEvaluate'])->name('view.evaluate');
-Route::get('/form/approve/{id}',[FormController::class, 'giveApprove'])->name('give.Approve');
-Route::get('/form/reject/{id}',[FormController::class, 'giveReject'])->name('give.Reject');
+Route::get('/panel/viewevaluate',[FormController::class, 'viewEvaluate'])->name('view.evaluate'); //display list of students
+Route::get('/panel/gradepage/{id}',[FormController::class, 'gradePage'])->name('view.gradepage');
+Route::post('/panel/givegrade',[FormController::class, 'giveGrade'])->name('give.grade');
+//Route::get('/form/approve/{id}',[FormController::class, 'giveApprove'])->name('give.Approve');
+//Route::get('/form/reject/{id}',[FormController::class, 'giveReject'])->name('give.Reject');
 
 Route::get('/dummy', function () {
     return view('admin.dummy');

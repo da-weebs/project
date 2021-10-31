@@ -52,6 +52,7 @@ class StudentController extends Controller
     public function studentEdit($id){
         $students = DB::table('students')->where('id', $id)->first(); //fetch first record using id
         return view('student.editstudent', compact('students'));
+
     }
 
     public function updateStudent(Request $request){

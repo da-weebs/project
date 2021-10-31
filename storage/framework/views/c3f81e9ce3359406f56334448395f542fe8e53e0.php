@@ -22,9 +22,9 @@
     </style>
 </head>
 <body>
-    @if(Session::has('success'))        
-    <span>{{ Session::get('success') }}</span>
-    @endif
+    <?php if(Session::has('success')): ?>        
+    <span><?php echo e(Session::get('success')); ?></span>
+    <?php endif; ?>
 
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
@@ -35,20 +35,20 @@
           <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{{route('admin.dashboard')}}" role="button" data-bs-toggle="dropdown">User</a>
+                <a class="nav-link dropdown-toggle" href="<?php echo e(route('admin.dashboard')); ?>" role="button" data-bs-toggle="dropdown">User</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('auth.register')}}">Register Admin</a></li>
-                  <li><a class="dropdown-item" href="{{route('auth.register1')}}">Register Coordinator</a></li>
-                  <li><a class="dropdown-item" href="{{route('auth.register2')}}">Register Supervisor</a></li>
-                  <li><a class="dropdown-item" href="{{route('admin.viewuser')}}">View User</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('auth.register')); ?>">Register Admin</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('auth.register1')); ?>">Register Coordinator</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('auth.register2')); ?>">Register Supervisor</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('admin.viewuser')); ?>">View User</a></li>
                 </ul>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Students</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.add')}}">Add Students</a></li>
-                  <li><a class="dropdown-item" href="{{route('student.list')}}">View Students</a></li>
-                  <li><a class="dropdown-item" href="{{route('student.importform')}}">Upload Students Data</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.add')); ?>">Add Students</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.list')); ?>">View Students</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.importform')); ?>">Upload Students Data</a></li>
                   
                 </ul>
               </li>
@@ -56,13 +56,13 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="{{route('student.add')}}">Change Password</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('student.add')); ?>">Change Password</a></li>
                   
                 </ul>
               </li>
 
-              <li class="nav-item"><a class="nav-link" href="{{ route('auth.logout') }}">Logout</a></li>
-              {{-- <li class="nav-item"><a class="nav-link disabled" href="#">{{ $LoggedUserInfo['name'] }}</li> --}}
+              <li class="nav-item"><a class="nav-link" href="<?php echo e(route('auth.logout')); ?>">Logout</a></li>
+              
             </ul>
           </div>
         </div>
@@ -81,22 +81,22 @@
                 <th>Phone Number</th>
             </tr>
             
-            @foreach($students as $list)
+            <?php $__currentLoopData = $students; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{$list->id}}</td>
-                <td>{{$list->studname}}</td>
-                <td>{{$list->course}}</td>
-                <td>{{$list->email}}</td>
-                <td>{{$list->phone}}</td>
+                <td><?php echo e($list->id); ?></td>
+                <td><?php echo e($list->studname); ?></td>
+                <td><?php echo e($list->course); ?></td>
+                <td><?php echo e($list->email); ?></td>
+                <td><?php echo e($list->phone); ?></td>
                 <td>
-                    <a href="/editstudent/{{$list->id}}" >Edit</a> |
-                    <a href="/deletestudent/{{$list->id}}" >Delete</a>
+                    <a href="/editstudent/<?php echo e($list->id); ?>" >Edit</a> |
+                    <a href="/deletestudent/<?php echo e($list->id); ?>" >Delete</a>
                 </td>
             </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </table>
             
         </div>
     </div>
 </body>
-</html>
+</html><?php /**PATH C:\Users\FAIZ\Documents\GitHub\project\resources\views/student/studentList.blade.php ENDPATH**/ ?>
