@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Evaluate Student</title>
-
+    <title>Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
@@ -56,54 +55,43 @@
           </div>
         </div>
       </nav>
+    
 
-        <div class="container">
-            <div class="row" style="margin-top:80px">
-                <h2>Evaluate Proposal</h2>
-        <table class="table table-bordered table-sm">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Program Code</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <th>Link</th>
-                <th>Action</th>
-                
-            </tr>
+        <br>
+            <div class="container" style="margin-top: 40px">          
+                <table class="table table-bordered">
             
-            <?php $__currentLoopData = $student; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $list): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+            <tbody>
             <tr>
-                <td><?php echo e($list->id); ?></td>
-                <td><?php echo e($list->studname); ?></td>
-                <td><?php echo e($list->course); ?></td>
-                <td><?php echo e($list->email); ?></td>
-                <td><?php echo e($list->phone); ?></td>                    
-                
-                
-                <td>
-                    <?php if($list->projects!=null): ?>     
-                        <?php $__currentLoopData = $list->projects; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $senarai): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?> 
-                            <a href="<?php echo e($senarai->link); ?>"><?php echo e($senarai->link); ?><br></a>
-                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
-                    <?php endif; ?>
-                </td>
-                <td>
-                    <a href="/panel/gradepage/<?php echo e($list->id); ?>" >Grade</a> 
-                </td>
-
-                <!-- <td>
-                    <a href="/form/approve/<?php echo e($list->id); ?>" >Approve</a> 
-                </td>
-                <td>
-                    <a href="/form/reject/<?php echo e($list->id); ?>" >Reject</a> 
-                </td> -->
+                <th>Session</th>
+                <td>2021/2022</td>
             </tr>
-            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-        </table>
+            <tr>
+                <th>Semester</th>
+                <td>1</td>
+            </tr>
+            <tr>
+                <th>Progress 1</th>
+                <td>20/12/2021</td>
+            </tr>
+            <tr>
+                <th>Progress 2</th>
+                <td>18/6/2022</td>
+            </tr>
+            <tr>
+                <th>Final Report</th>
+                <td>22/9/2022</td>
+            </tr>
+            <tr>
+                <th>Presentation & Demo</th>
+                <td>25/9/2022</td>
+            </tr>
 
-    </div>
-</div>
+
+
+            </tbody>
+        </table>
+        </div>
+
 </body>
-</html><?php /**PATH C:\Users\FAIZ\Documents\GitHub\project\resources\views/panel/viewevaluate.blade.php ENDPATH**/ ?>
+</html><?php /**PATH C:\Users\FAIZ\Documents\GitHub\project\resources\views/lecturer/dashboard.blade.php ENDPATH**/ ?>

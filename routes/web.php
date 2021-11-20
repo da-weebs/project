@@ -7,6 +7,8 @@ use App\Http\Controllers\MainController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\PanelController;
+use App\Http\Controllers\SessionController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -89,6 +91,14 @@ Route::get('/panel/gradepage/{id}',[FormController::class, 'gradePage'])->name('
 Route::post('/panel/givegrade',[FormController::class, 'giveGrade'])->name('give.grade');
 //Route::get('/form/approve/{id}',[FormController::class, 'giveApprove'])->name('give.Approve');
 //Route::get('/form/reject/{id}',[FormController::class, 'giveReject'])->name('give.Reject');
+
+//panel
+Route::get('/panel/dashboard',[PanelController::class, 'viewDashboard'])->name('view.paneldashboard');
+
+//session
+Route::get('/session/get',[SessionController::class, 'getSessionData'])->name('session.get');
+Route::get('/session/set',[SessionController::class, 'storeSessionData'])->name('session.store');
+Route::get('/session/remove',[SessionController::class, 'deleteSessionData'])->name('session.delete');
 
 Route::get('/dummy', function () {
     return view('admin.dummy');

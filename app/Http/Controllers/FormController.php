@@ -169,7 +169,7 @@ class FormController extends Controller
 
         $student->projects()->save($project);
         
-        return back()->with('success','Student updated successfully');
+        return back()->with('success','Link updated successfully');
     }
 
     public function testadd(){
