@@ -43,7 +43,7 @@ class MainController extends Controller
         $admin->name = $request->name;
         $admin->username = $request->username;
         $admin->email = $request->email;
-        $admin->password=Str::random(8);
+        $admin->password= Hash::make(Str::random(8));
         $request->password=$admin->password;
         $admin->log = 0;
         $admin->students = 0;
