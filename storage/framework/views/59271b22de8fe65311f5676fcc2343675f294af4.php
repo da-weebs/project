@@ -43,6 +43,24 @@
               </li>
 
               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Supervisor</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="<?php echo e(route('view.upload')); ?>">Assign Panel</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('view.upload')); ?>">Grade PSM 1</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('view.evaluate')); ?>">Grade PSM 2</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Panel</a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="<?php echo e(route('view.upload')); ?>">Grade Proposal</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('view.upload')); ?>">Grade PSM 1</a></li>
+                  <li><a class="dropdown-item" href="<?php echo e(route('view.evaluate')); ?>">Grade PSM 2</a></li>
+                </ul>
+              </li>
+
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Profile</a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="<?php echo e(route('student.add')); ?>">Change Password</a></li>

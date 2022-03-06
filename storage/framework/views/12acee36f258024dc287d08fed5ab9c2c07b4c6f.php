@@ -10,34 +10,11 @@
     
 </head>
     <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container-fluid">
+    
 
-         <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li class="dropdown">
-               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Lecturer
-               <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><a href="<?php echo e(route('coordinator.viewlecturer')); ?>">View Lecturer</a></li>
-                  <li><a href="<?php echo e(route('coordinator.assignsv')); ?>">Assign Student</a></li>
-               </ul>
-            </li>
+    
 
-            <li class="dropdown">
-               <a class="dropdown-toggle" data-toggle="dropdown" href="#">Profile
-               <span class="caret"></span></a>
-               <ul class="dropdown-menu">
-                  <li><a href="<?php echo e(route('admin.changepassword')); ?>">Change Password</a></li>
-               </ul>
-            </li>
-            
-            <li><a href="<?php echo e(route('auth.logout')); ?>">Logout</a></li>
-         </ul>
-      </div>
-    </nav>
-
-        <div class="container">
+        <div class="container" style="margin-top: 60px">
             <div class="col-md-4 col-md-offset-4">
             <?php if(Session::has('success')): ?>
             <span><?php echo e(Session::get('success')); ?></span>
